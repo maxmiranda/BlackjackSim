@@ -194,7 +194,7 @@ def playing(my_hand,bet):
     global losses
     global money
     RIGHT_STRATEGY = properStrategy(my_hand,upcard)
-    action = input("What would you like to do?   ")
+    action = raw_input("What would you like to do?   ")
     while str.lower(action) != "stand":
         if strat2command(RIGHT_STRATEGY) != str.lower(action):
             print("\n Wrong! Here you should have " + pasttenseify(strat2command(RIGHT_STRATEGY)))
@@ -232,7 +232,7 @@ def playing(my_hand,bet):
             money -= bet
             #playGame(response, wins, losses, pushes, money) #This is the reason that when you bust once on simulator, you have to play a whole game before you get back to the thing
             return False
-        action = input("What would you like to do?   ")
+        action = raw_input("What would you like to do?   ")
     return action
 
 def evaluate_winner(my_hand, dealer_hand):
@@ -271,7 +271,7 @@ money = 100
 upcard = ''
 my_hand = []
 
-response = input("\n" +"########################################################" + "\n"+ "\n" + "Welcome to Max's Command Line Blackjack Simulator. If you would like to get started, press enter!")
+response = raw_input("\n" +"########################################################" + "\n"+ "\n" + "Welcome to Max's Command Line Blackjack Simulator. If you would like to get started, press enter!")
 
 while not response:
     recordAndBalance(wins,losses,pushes,money)
@@ -307,57 +307,3 @@ while not response:
                 if str.lower(finalreturn) == "double":
                     bet *=2
                 evaluate_winner(my_hand, dealer_hand)
-
-############# Remnants of Probabilistic Testing #################
-"""def testHand(my_hand, upcard, my_strategy):
-    #your own personal strategy
-    initial_upcard = upcard[0]
-
-
-    for i in range(10000):
-        upcard = [initial_upcard]
-        if points(my_hand) == 21:
-            wins += 1
-            continue
-        my_hand = my_strategy(my_hand,upcard) # will be my_strategy or something along the lines, no matter what biggest point is accuring data
-
-        point_total = points(my_hand)
-
-
-        dealer_hand = hit(upcard) #dealer (by flipping over hole card is effectively hitting)
-        dealer_hand = dealer_strategy(dealer_hand, upcard) #even though upcard is completely unnecessary, need to include it because of the declaratory and strict nature of parameters,
-        dealer_points = points(dealer_hand)
-        if bust(my_hand):
-            losses +=1
-        elif bust(dealer_hand):
-            wins +=1
-        else:
-            if point_total > dealer_points:
-                wins +=1
-            elif dealer_points > point_total:
-                losses +=1
-            else:
-                pushes +=1
-    return wins, losses, pushes
-    #print(str(my_hand) + str([initial_upcard]) + 'Record: ' +str(wins) + '-' + str(losses) + '-'+ str(pushes)) #this is only for testing a particular hand against a particular upcard with a particular strategy
-
-def disadvantage(wins, losses):
-    return (losses - wins) / (losses + wins)
-wins = 0
-losses = 0
-pushes = 0
-
-for i in range(13):
-    card1 = cards[i]
-    for j in range(13):
-        card2 = cards[j]
-        for k in range(13):
-            upcard = cards[k]
-
-    newwins, newlosses, newpushes = testHand([card1,card2],[upcard], dealer_strategy)
-    wins +=newwins
-    losses+= newlosses
-    pushes += newpushes
-print(wins, losses, pushes, "disadvantage: " + str(disadvantage(wins,losses)* 100) + "%")
-######################################
-"""
