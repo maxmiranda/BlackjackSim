@@ -23,11 +23,11 @@ rules = {# 2	3	4	5	6	7	8	9	10	A
 '18':	['H',	'H',	'H',	'H',	'H',	'H',	'H',	'H',	'H',	'H'],
 '19':	['H',	'H',	'H',	'H',	'H',	'H',	'H',	'H',	'H',	'H'],
 '20':	['H',	'H',	'H',	'H',	'H',	'H',	'H',	'H',	'H',	'H'],
-'S13': ['H',	'H',	'H',	'D',	'D',	'H',	'H',	'H',	'H',	'H'],
+'S13':  ['H',	'H',	'H',	'D',	'D',	'H',	'H',	'H',	'H',	'H'],
 'S14':	['H',	'H',	'H',	'D',	'D',	'H',	'H',	'H',	'H',	'H'],
 'S15':	['H',	'H',	'D',	'D',	'D',	'H',	'H',	'H',	'H',	'H'],
 'S16':	['H',	'H',	'D',	'D',	'D',	'H',	'H',	'H',	'H',	'H'],
-'S17': ['H',	'D',	'D',	'D',	'D',	'H',	'H',	'H',	'H',	'H'],
+'S17':  ['H',	'D',	'D',	'D',	'D',	'H',	'H',	'H',	'H',	'H'],
 'S18':	['S',	'D',   'D',	'D',	'D',	'H',	'H',	'H', 'H'],
 'S19':	['S',	'S',	'S',	'S',	'S',	'S',	'S',	'S',	'S',	'S'],
 'S20':	['S',	'S',	'S',	'S',	'S',	'S',	'S',	'S',	'S',	'S'],
@@ -194,7 +194,7 @@ def playing(my_hand,bet):
     global losses
     global money
     RIGHT_STRATEGY = properStrategy(my_hand,upcard)
-    action = raw_input("What would you like to do?   ")
+    action = input("What would you like to do?   ")
     while str.lower(action) != "stand":
         if strat2command(RIGHT_STRATEGY) != str.lower(action):
             print("\n Wrong! Here you should have " + pasttenseify(strat2command(RIGHT_STRATEGY)))
@@ -232,7 +232,7 @@ def playing(my_hand,bet):
             money -= bet
             #playGame(response, wins, losses, pushes, money) #This is the reason that when you bust once on simulator, you have to play a whole game before you get back to the thing
             return False
-        action = raw_input("What would you like to do?   ")
+        action = input("What would you like to do?   ")
     return action
 
 def evaluate_winner(my_hand, dealer_hand):
@@ -267,11 +267,11 @@ def evaluate_winner(my_hand, dealer_hand):
 wins = 0
 losses = 0
 pushes = 0
-money = 100
+money = 400
 upcard = ''
 my_hand = []
 
-response = raw_input("\n" +"########################################################" + "\n"+ "\n" + "Welcome to Max's Command Line Blackjack Simulator. If you would like to get started, press enter!")
+response = input("\n" +"########################################################" + "\n"+ "\n" + "Welcome to Max's Command Line Blackjack Simulator. If you would like to get started, press enter!")
 
 while not response:
     recordAndBalance(wins,losses,pushes,money)
