@@ -158,8 +158,12 @@ def strat2command(strategy):
 def pasttenseify(verb):
     if verb == 'stand':
         return 'stood'
+    if verb == 'hit': 
+        return 'hit'
     if verb == 'double':
         return 'doubled'
+    if verb == 'split':
+        return 'split'
 
 def playGame(bet):
     global wins
